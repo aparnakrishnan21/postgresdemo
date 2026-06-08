@@ -27,4 +27,5 @@ def create_user(user_id, username):
             conn.close()
 
 
-create_user(1, "Aparna")
+create_user(4, "KRISHA")
+create_user(5, "Aswathy")
