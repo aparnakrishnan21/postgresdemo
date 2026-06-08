@@ -5,27 +5,26 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from db import get_db_connection
 
 
-def create_user(user_id, username):
+def update_user(user_id, new_username):
     conn = get_db_connection()
 
     if conn:
         try:
             cursor = conn.cursor()
 
-            query = "INSERT INTO users (id, name) VALUES (%s, %s);"
-            cursor.execute(query, (user_id, username))
+            query = "UPDATE users SET name = %s WHERE id = %s;"
+            cursor.execute(query, (new_username, user_id))
 
             conn.commit()
             cursor.close()
 
-            print(f"User {username} created successfully.")
+            print(f"User {user_id} updated to {new_username}.")
 
         except Exception as e:
-            print(f"Error creating user: {e}")
+            print(f"Error updating user: {e}")
 
         finally:
             conn.close()
 
 
-#create_user(4, "KRISHA")
-#create_user(5, "Aswathy")
+update_user(4, "KRISHNA M ")
